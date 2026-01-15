@@ -1,4 +1,5 @@
-By Burhan 
+By Burhan U Din Abdullah 
+
 # Agentic Secure Grid Communication
 
 This repository provides a reference implementation for a time-bounded,
