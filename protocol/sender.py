@@ -1,35 +1,41 @@
 import os
-from core.fragmentation import fragment_message
 from core.crypto import CryptoEngine
 from core.key_schedule import derive_layer_keys
+from core.fragmentation import fragment_message
 
 def generate_traffic(agent, message: bytes, dummy_ratio: float):
     crypto = CryptoEngine()
-    nonce = os.urandom(16)
-    agent.last_nonce = nonce
 
-    # 🔒 IDLE TRAFFIC CASE
+    # ===============================
+    # IDLE TRAFFIC (NO REAL MESSAGE)
+    # ===============================
     if message is None:
-        fake_payload = b"\x00" * 256
+        n_fragments = agent.fragment_count
+        dummy_payload = b"\x00" * 32
         packets = fragment_message(
-            fake_payload,
-            agent.fragment_count,
+            dummy_payload,
+            n_fragments,
             dummy_ratio,
-            agent.master_key
+            agent.master_key,
+            force_dummy=True
         )
-        agent.expected_real_fragments = 0
         return packets
 
-    # 🔐 REAL MESSAGE CASE
+    # ===============================
+    # REAL MESSAGE TRAFFIC
+    # ===============================
+    nonce = os.urandom(16)
+    agent.last_nonce = nonce
     keys = derive_layer_keys(agent.master_key, nonce)
-    data = message
 
+    data = message
     for k in keys:
         data = crypto.encrypt(data, k)
 
+    n_fragments = agent.fragment_count
     packets = fragment_message(
         data,
-        agent.fragment_count,
+        n_fragments,
         dummy_ratio,
         agent.master_key
     )
