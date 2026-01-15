@@ -16,33 +16,3 @@ Adaptive Agent Control: Autonomous security agents that respond dynamically to d
 
 Advanced Resilience: Hardened against packet loss, jitter, delay, and distributed denial-of-service (DDoS) attacks.
 
-📂 Repository Structure
-
-
-├── core/         # Cryptographic abstractions & timing primitives
-├── agents/       # Adaptive security agents & decision logic
-├── network/      # Traffic shaping & adversarial simulation models
-├── protocol/     # End-to-end sender/receiver pipelines
-├── simulation/   # Experimentation scripts & evaluation logic
-
-
-🛠️ Getting Started
-Prerequisites
-Ensure you have Python 3.8 or higher installed.
-
-Installation & Execution
-Bash
-
-# 1. Clone the repository
-git clone https://github.com/your-username/agentic-secure-grid.git
-cd agentic-secure-grid
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Launch the simulation
-python main.py
-📜 License & Usage
-Copyright (c) 2026 Burhan U Din Abdullah. All Rights Reserved.
-
-This software is not open-source. No person or entity may use, copy, modify, merge, or distribute this software without the express prior written permission of the copyright holder.
