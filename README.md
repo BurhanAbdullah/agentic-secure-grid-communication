@@ -1,18 +1,31 @@
-🛡️ Agentic Secure Grid Communication
-Developed by Burhan U Din Abdullah
+By Burhan U Din Abdullah 
 
-This repository provides a high-performance reference implementation for a time-bounded, agent-mediated, and post-quantum-resilient secure communication architecture designed specifically for intelligent power systems (Smart Grids).
+# Agentic Secure Grid Communication
 
-🚀 Key Framework Features
-The architecture is built to withstand advanced persistent threats (APTs) and future quantum computing risks through:
+This repository provides a reference implementation for a time-bounded,
+agent-mediated, post-quantum-resilient secure communication architecture
+for intelligent power systems.
 
-Constant-Entropy Traffic Shaping: Neutralizes traffic analysis by maintaining a uniform data signature.
+The framework integrates:
+- Constant-entropy traffic shaping
+- Multilayer packet fragmentation with dummy payloads
+- Time-bounded correctness guarantees
+- Adaptive agent-based security control
+- Resilience to traffic analysis, packet loss, delay, and DDoS attacks
 
-Multilayer Packet Fragmentation: Deep obfuscation using dummy payloads to mask true data patterns.
+The implementation is aligned with the accompanying research paper and is intended for reproducible simulation and artifact evaluation.
 
-Time-Bounded Correctness: Formal guarantees that security operations complete within strict grid latency requirements.
+## Repository Structure
+- core/: cryptographic abstraction, packet and timing primitives
+- agents/: adaptive security agents
+- network/: traffic shaping and adversarial models
+- protocol/: sender and receiver pipelines
+- simulation/: experiments and evaluation logic
+- paper/: LaTeX source of the manuscript
 
-Adaptive Agent Control: Autonomous security agents that respond dynamically to detected adversarial behavior.
+## Running the Simulation
 
-Advanced Resilience: Hardened against packet loss, jitter, delay, and distributed denial-of-service (DDoS) attacks.
-
+```bash
+pip install -r requirements.txt
+python main.py
+# agentic-secure-grid-communication
