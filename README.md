@@ -13,16 +13,15 @@ The framework integrates:
 - Adaptive agent-based security control
 - Resilience to traffic analysis, packet loss, delay, and DDoS attacks
 
-The implementation is aligned with the accompanying research paper and
-is intended for reproducible simulation and artifact evaluation.
+
 
 ## Repository Structure
 - core/: cryptographic abstraction, packet and timing primitives
 - agents/: adaptive security agents
 - network/: traffic shaping and adversarial models
 - protocol/: sender and receiver pipelines
-- simulation/: experiments and evaluation logic
-- paper/: LaTeX source of the manuscript
+
+
 
 ## Running the Simulation
 
