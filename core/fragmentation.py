@@ -1,21 +1,20 @@
 import random
 from core.packet import Packet
 
-def fragment_message(data: bytes, n_fragments: int, dummy_ratio: float):
+def fragment_message(data: bytes, n_fragments: int, dummy_ratio: float, signer=None):
     fragments = []
     size = max(1, len(data) // n_fragments)
 
-    # Simple deterministic signature placeholder
-    real_sig = b"REAL_SIG"
-    dummy_sig = b"DUMMY_SIG"
-
     for i in range(n_fragments):
         frag = data[i*size:(i+1)*size]
-        fragments.append(Packet.create(frag, False, real_sig))
+        sig = signer(frag) if signer else b""
+        fragments.append(Packet.create(frag, False, sig))
 
     dummy_count = int(n_fragments * dummy_ratio)
     for _ in range(dummy_count):
-        fragments.append(Packet.create(b'\x00' * size, True, dummy_sig))
+        dummy = b'\x00' * size
+        sig = signer(dummy) if signer else b""
+        fragments.append(Packet.create(dummy, True, sig))
 
     random.shuffle(fragments)
     return fragments
