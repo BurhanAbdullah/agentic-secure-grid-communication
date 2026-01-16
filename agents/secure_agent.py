@@ -2,34 +2,40 @@ class SecureAgent:
     def __init__(self, master_key):
         self.master_key = master_key
 
-        # Threat state
-        self.loss = 0.0
-        self.delay = 0.0
-        self.ddos_pressure = 0.0
+        # Security state
+        self.threat_score = 0.0
+        self.attack_score = 0.0
 
-        # Adaptive parameters
+        # Fragment & protocol state
+        self.base_fragments = 8
         self.fragment_count = 8
-        self.dummy_ratio = 1.0
-        self.required_fraction = 0.75
-
-        # Time-lock state
-        self.locked = False
-        self.last_nonce = None
         self.expected_real_fragments = 0
+        self.last_nonce = None
 
-    def observe(self, loss, delay, arrival_skew):
-        self.loss = loss
-        self.delay = delay
-        self.ddos_pressure = min(1.0, loss + delay + arrival_skew)
-        self._adapt()
+        # Irreversible lock
+        self.locked = False
+        self.lock_reason = None
 
-    def _adapt(self):
-        self.fragment_count = int(8 + 8 * self.ddos_pressure)
-        self.dummy_ratio = 1.0 + 2.0 * self.ddos_pressure
-        self.required_fraction = max(0.5, 0.9 - 0.4 * self.ddos_pressure)
+    def observe(self, loss=0.0, delay=0.0):
+        """
+        Adaptive but bounded defense escalation.
+        """
+        pressure = loss + delay
+        self.attack_score += pressure
+        self.threat_score = min(1.0, self.threat_score + 0.2 * pressure)
 
-    def threshold(self):
-        return int(self.expected_real_fragments * self.required_fraction)
+        # 🧠 Controlled adaptation (NO PANIC)
+        self.fragment_count = int(
+            self.base_fragments + 2 * self.threat_score
+        )
 
-    def trigger_lock(self):
-        self.locked = True
+        # Absolute safety bounds
+        self.fragment_count = max(6, min(10, self.fragment_count))
+
+        # Irreversible lock ONLY on sustained attack
+        if self.attack_score > 4.0 and not self.locked:
+            self.locked = True
+            self.lock_reason = "IRREVERSIBLE_ATTACK_THRESHOLD_EXCEEDED"
+
+    def is_locked(self):
+        return self.locked

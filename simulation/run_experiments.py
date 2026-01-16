@@ -11,18 +11,16 @@ def run_all(agent, generate_fn, receive_fn):
         for _ in range(50):
             packets = generate_fn(agent, b"Shutdown Station A", 1.0)
 
-            arrival_skew = random.uniform(0.0, loss)
+            # Simulated delay pressure
+            delay = random.uniform(0.0, loss)
 
-            agent.observe(
-                loss=loss,
-                delay=loss * 0.5,
-                arrival_skew=arrival_skew
-            )
+            agent.observe(loss=loss, delay=delay)
 
-            kept = [p for p in packets if random.random() > loss]
-
-            if receive_fn(kept, agent):
+            out = receive_fn(packets, agent)
+            if out:
                 success += 1
 
-        prob = success / 50.0
-        print(f"Loss {loss:.1f} → Threshold {agent.threshold()} → Reconstruction Prob {prob:.3f}")
+        print(
+            f"Loss {loss:.1f} → Threshold {agent.fragment_count} → "
+            f"Reconstruction Prob {success/50:.3f}"
+        )
