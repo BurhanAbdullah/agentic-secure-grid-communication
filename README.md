@@ -26,3 +26,11 @@ To verify the system performance, install the framework as a local package:
 
 ---
 © 2026 Burhan Abdullah. All Rights Reserved.
+
+## Proprietary V2 Access
+The Post-Quantum (V2) implementation and the high-fidelity agentic logic are stored in a private vault for intellectual property protection. 
+
+To request access for academic review:
+1. Open a GitHub Issue titled "Access Request: V2 Architecture".
+2. Provide your academic or institutional affiliation.
+3. Upon approval, you will be invited as a collaborator to the private core.
