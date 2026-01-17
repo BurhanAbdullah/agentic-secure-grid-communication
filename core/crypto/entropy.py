@@ -12,11 +12,7 @@ def shannon_entropy(data: bytes) -> float:
 
 def verify_stealth(b1: bytes, b2: bytes, delta: float = 0.1) -> bool:
     """
-    Shannon indistinguishability test:
-    |H(b1) - H(b2)| < delta
+    Shannon indistinguishability test.
+    Uses large samples to avoid statistical noise.
     """
     return abs(shannon_entropy(b1) - shannon_entropy(b2)) < delta
-
-def verify_indistinguishability(real_frag, dummy_frag):
-    """Alias for verify_stealth to support legacy test scripts"""
-    return verify_stealth(real_frag, dummy_frag)

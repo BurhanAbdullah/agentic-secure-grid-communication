@@ -12,7 +12,7 @@ def run_v1_audit():
     print(f"Layer 1 (Identity): {'✅ VALID' if pki_ok else '❌ FAIL'}")
 
     # Check 2: Stealth
-    stealth_ok = verify_stealth(os.urandom(64), os.urandom(64))
+    stealth_ok = verify_stealth(os.urandom(2048), os.urandom(2048))
     print(f"Layer 5 (Stealth):  {'✅ VALID' if stealth_ok else '❌ FAIL'}")
 
     # Check 3: Safety Sink
