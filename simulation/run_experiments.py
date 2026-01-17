@@ -5,6 +5,7 @@ def run_all(agent, traffic_fn, receiver_fn):
     print("\n=== Aegis-Grid: v1.3 Triple-Pillar Validation ===")
 
     for loss in [0.1, 0.2, 0.3, 0.4]:
+        printed = False
         success, locked, trials = 0, 0, 100
 
         for _ in range(trials):

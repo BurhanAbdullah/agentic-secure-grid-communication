@@ -9,7 +9,6 @@ class SecureAgent:
         self.pressure = 0.0
         self._lock_announced = False
 
-        # Required protocol contract
         self.base_fragments = 12
         self.fragment_count = 12
         self.threshold = 12
@@ -25,8 +24,6 @@ class SecureAgent:
     def observe(self, loss):
         if self.locked:
             return
-
-        # Adaptive quorum (availability)
         self.threshold = max(4, int(self.base_fragments * (1.0 - loss)))
 
     def add_attack_pressure(self, amount):
@@ -34,8 +31,12 @@ class SecureAgent:
             return
 
         self.pressure += amount
+
         if self.pressure >= self.PRESSURE_LIMIT:
             self.locked = True
             if not self._lock_announced:
-                print(f"[SECURITY] TIME-LOCK irreversible failure -> Pressure: {self.pressure:.2f}")
+                print(
+                    f"[SECURITY] TIME-LOCK irreversible failure -> "
+                    f"Pressure: {self.pressure:.2f}"
+                )
                 self._lock_announced = True
