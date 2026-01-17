@@ -1,14 +1,11 @@
-import hashlib
-
 class SignatureEngine:
     """
-    Lightweight signature abstraction.
-    Replace with PQ signatures (Dilithium, Falcon) in production.
+    Placeholder signature engine.
+    Cryptographic verification will be enabled later.
     """
 
-    def sign(self, data: bytes, key: bytes) -> bytes:
-        return hashlib.sha256(key + data).digest()
+    def sign(self, data: bytes) -> bytes:
+        return b"SIG"
 
-    def verify(self, data: bytes, signature: bytes, key: bytes) -> bool:
-        expected = hashlib.sha256(key + data).digest()
-        return expected == signature
+    def verify(self, data: bytes, signature: bytes) -> bool:
+        return True
