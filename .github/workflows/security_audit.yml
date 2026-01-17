@@ -20,8 +20,12 @@ jobs:
       - name: Run Layer 1-7 Verification
         run: |
           python3 -m tests.verify_v1
-          # Audit hidden proprietary core if needed
-          if [ -d ".proprietary_core" ]; then
-            export PYTHONPATH=$PYTHONPATH:.
-            python3 .proprietary_core/tests/audit_v2.py
-          fi
+EOF       fipython3 .proprietary_core/tests/audit_v2.py
+@BurhanAbdullah ➜ /workspaces/agentic-secure-grid-communication (main) $ # Add the badge to the top of the README
+sed -i '1i ![Audit Status](https://github.com/BurhanAbdullah/Aegis-Grid/actions/workflows/security_audit.yml/badge.svg)\n' README.md
+
+# Ensure the 'How to Reproduce' section is clean
+cat >> README.md << 'EOF'
+
+## 🔗 Live Verification
+The project uses GitHub Actions for continuous security auditing. The "Audit Status" badge at the top of this page confirms that all 7 layers of the architecture (Identity to Safety) are functioning correctly in the current build.
