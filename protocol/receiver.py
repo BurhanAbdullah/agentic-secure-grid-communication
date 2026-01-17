@@ -6,6 +6,8 @@ def receive_and_reconstruct(packets, agent):
 
     if len(packets) < agent.threshold:
         agent.add_attack_pressure(1.0)
+        if agent.is_locked():
+            return False
         return False
 
     verifier = SignatureEngine()
@@ -17,5 +19,7 @@ def receive_and_reconstruct(packets, agent):
             seen.add(p.frag_id)
         else:
             agent.add_attack_pressure(1.5)
+        if agent.is_locked():
+            return False
 
     return len(seen) >= agent.threshold
