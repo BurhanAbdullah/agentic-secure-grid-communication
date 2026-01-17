@@ -1,15 +1,6 @@
-Since you want to restrict use to permission-only, the MIT License is no longer appropriate for your project. The MIT License is a "permissive" open-source license that explicitly allows anyone to use, copy, and sell the software without asking first.
+ACADEMIC USE ONLY - REDISTRIBUTION PROHIBITED
+Copyright (c) 2026 Burhan Abdullah.
 
-To achieve your goal, you should use a "Proprietary" or "All Rights Reserved" notice. This legally signals that you retain all rights and that others must contact you for a license to use it.
-
-Updated License Notice
-Replace your current LICENSE file text with the following:
-
-Copyright (c) 2026 Burhan Abdullah
-All Rights Reserved
-
-No person or entity may use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of this software without the express prior written permission of the copyright holder.
-
-For permission requests, please contact: [Your Email or Contact Method Here]
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+This repository contains proprietary research on Agentic Secure Grid Communication.
+Unauthorized copying, modification, or distribution via scraping or manual replication 
+is strictly prohibited. 
