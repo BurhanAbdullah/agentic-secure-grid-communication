@@ -1,59 +1,153 @@
-# Aegis-Grid — v3.0 (Agentic Elastic Defense)
+Aegis-Grid — v3.0 (Agentic Elastic Defense)
 
-Aegis Grid is an autonomous communication framework designed for high-assurance power systems. It integrates agent-based intelligence to manage network resilience and post-quantum identity verification.
+Aegis-Grid is a bash-first, agent-controlled security simulation framework.
+It models security as a dynamic control system rather than a static protocol.
 
-## System Architecture
-The framework operates on a seven-layer cryptographic stack. The security agent functions as a closed-loop controller that monitors network pressure and adjusts security parameters dynamically.
+This version focuses on agentic decision-making under uncertainty, cost-aware
+defense, and adversarial stress testing.
 
+------------------------------------------------------------
+Overview
+------------------------------------------------------------
 
+Aegis-Grid treats security like a control loop:
 
-## Threat Model Summary
-The architecture is designed to withstand a Dolev-Yao adversary with the following capabilities:
-- Global Passive Observation: Metadata and traffic volume analysis.
-- Partial Node Compromise: Injection of malicious forgeries.
-- Network Interference: Sustained packet loss up to 50 percent.
-- Quantum Capabilities: Retroactive decryption of intercepted grid traffic.
+observe system signals
+decide adaptively
+apply mitigation
+pay operational cost
+fail safely when limits are exceeded
 
-## Installation and Reproduction
-To verify the system performance, install the framework as a local package:
+The system is fully deterministic, auditable, and implemented in bash to keep
+all logic transparent.
 
-1. Setup: Run pip install -e . to link the library in editable mode.
-2. Execution: Run the audit module using python3 -m tests.verify_v1.
-3. Verification:
-   - Layer 1 validates the Root of Trust through RSA-2048/PQ identity roots.
-   - Layer 5 confirms the Shannon Invariant where the entropy delta remains below 0.1.
-   - Layer 7 confirms the terminal lockout state transition.
+------------------------------------------------------------
+Core Signals
+------------------------------------------------------------
 
----
-© 2026 Burhan Abdullah. All Rights Reserved.
+attack pressure
+  cumulative packet loss over time
 
-## Proprietary V2 Access
-The Post-Quantum (V2) implementation and the high-fidelity agentic logic are stored in a private vault for intellectual property protection. 
+entropy / noise
+  signal degradation and uncertainty, including spoofed noise
 
-To request access for academic review:
-1. Open a GitHub Issue titled "Access Request: V2 Architecture".
-2. Provide your academic or institutional affiliation.
-3. Upon approval, you will be invited as a collaborator to the private core.
+adaptive threshold
+  thresholds shift based on history, not fixed constants
 
-## Design Rationale and Novelty
+elastic mitigation
+  defense strength scales instead of switching on/off
 
-Aegis Grid differs from conventional secure communication frameworks in how security degradation and failure are modeled. Rather than treating attacks as isolated or recoverable events, the system models adversarial activity as cumulative pressure that evolves over time.
+computational cost
+  mitigation consumes resources and introduces overhead
 
-The security agent operates as a closed-loop controller. It continuously observes network pressure, entropy stability, and agent trust signals, and responds by adjusting cryptographic and protocol-level parameters during runtime. These adjustments are not preconfigured failover modes, but adaptive responses derived from sustained conditions.
+fail-secure
+  irreversible lockdown when safety margins are exceeded
 
-A key design decision is the use of irreversible fail-secure transitions. When attack pressure exceeds safe operational bounds, the system enters a terminal time-lock state. This transition is intentional and non-recoverable through normal network operation, prioritizing containment and safety over availability. Recovery requires explicit out-of-band intervention.
+------------------------------------------------------------
+What Changed in v3.0
+------------------------------------------------------------
 
-Entropy is treated as an explicit system health signal rather than an implicit cryptographic property. Entropy collapse is interpreted as a security failure condition and directly influences agent behavior and threshold adaptation.
+agentic elastic mitigation
+  defense effort scales with observed risk
 
-Security control is distributed across autonomous agents rather than centralized logic. Each agent operates with partial visibility, and global behavior emerges from coordinated local decisions. This structure enables simulation, verification, and extension without reliance on a single trusted controller.
+false-positive resistance
+  jitter and near-trigger tests where agent must not react
 
-This architecture does not introduce new cryptographic primitives. Its contribution lies in the integration of adaptive thresholds, pressure-based threat modeling, irreversible security transitions, and agent-driven control into a single coherent framework suitable for high-assurance and safety-critical environments.
+fog-of-war adversary
+  decoy entropy spikes without real loss
 
+ramp-up (boil-the-frog) attacks
+  slow attack intensity increase to evade naive thresholds
 
-## v3.0 — Agentic Elastic Defense
-- Elastic mitigation (cost-aware)
-- False-positive resistance
-- Ramp-up (boil-the-frog) attack handling
-- Fog-of-war / decoy entropy testing
-- Fail-secure enforcement
-- Sensitivity sweep experiments
+cost-aware decision logic
+  mitigation increases computational cost
+
+fail-secure boundary discovery
+  hard safety cutoff under sustained attack
+
+sensitivity sweeps
+  automatic exploration of attack intensity vs survivability
+
+------------------------------------------------------------
+Experiments Implemented
+------------------------------------------------------------
+
+baseline attack simulation
+agent-controlled mitigation
+stress tests with entropy noise
+jitter and near-trigger false positives
+fog-of-war spoofing
+computational cost accounting
+fail-secure triggering
+sensitivity matrix sweep
+
+------------------------------------------------------------
+Repository Structure
+------------------------------------------------------------
+
+experiments/
+  simulate_attack.sh
+  simulate_attack_with_agent.sh
+  simulate_attack_agent_stress.sh
+  sensitivity_sweep.sh
+
+results/
+  attack_data.dat
+  attack_agent_data.dat
+  attack_agent_stress.dat
+  sensitivity_matrix.csv
+
+.novelty_state/
+  baseline.txt
+  current.txt
+  counts.csv
+
+VERSION
+
+------------------------------------------------------------
+How to Run
+------------------------------------------------------------
+
+cd experiments
+chmod +x *.sh
+./simulate_attack.sh
+./simulate_attack_with_agent.sh
+./simulate_attack_agent_stress.sh
+./sensitivity_sweep.sh
+
+Results are written to the results directory.
+
+------------------------------------------------------------
+Design Philosophy
+------------------------------------------------------------
+
+security is treated as a system property, not a configuration
+agents reason over history, cost, and uncertainty
+defense is elastic, not binary
+false positives are as dangerous as missed attacks
+fail-safe behavior is mandatory
+
+Aegis-Grid is designed for research, teaching, and systems thinking where
+interpretability and control matter more than opaque automation.
+
+------------------------------------------------------------
+Status
+------------------------------------------------------------
+
+bash-only core
+no external dependencies
+fully auditable logic
+deterministic experiments
+research-grade prototype
+
+Version: v3.0-agentic-elastic-defense
+
+------------------------------------------------------------
+NOTICE
+------------------------------------------------------------
+
+Sections of this document describe experimental agent logic
+and evaluation methodology. Reuse without attribution or
+contextual understanding is explicitly discouraged.
+
+This repository prioritizes interpretability over portability.
