@@ -1,0 +1,4 @@
+=== FOG OF WAR TEST SUMMARY ===
+Final cumulative loss : 18.95
+Total computation cost: 143.5
+Fail-secure triggered : 1

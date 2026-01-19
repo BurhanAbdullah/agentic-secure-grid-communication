@@ -1,0 +1,5 @@
+=== STRESS TEST SUMMARY ===
+Agent trigger time     : 50
+Fail-secure triggered  : 0
+Final cumulative loss  : 13.7038
+Total computation cost : 176.5
